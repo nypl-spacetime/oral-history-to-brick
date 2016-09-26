@@ -7,8 +7,6 @@ var argv = require('minimist')(process.argv.slice(2), {
 })
 
 const fs = require('fs')
-const path = require('path')
-const R = require('ramda')
 const H = require('highland')
 const csv = require('csv-parser')
 
@@ -30,13 +28,10 @@ collections.forEach((collection) => {
   collectionsById[collection.id] = collection
 })
 
-String.prototype.replaceAll = function(search, replacement) {
-  var target = this
-  return target.replace(new RegExp(search, 'g'), replacement)
-}
+const replaceAll = (str, search, replacement) => str.replace(new RegExp(search, 'g'), replacement)
 
 const dashCollection = (row) => Object.assign(row, {
-  collection: row.collection.replaceAll(' ', '-')
+  collection: replaceAll(row.collection, ' ', '-')
 })
 
 H(stream)
