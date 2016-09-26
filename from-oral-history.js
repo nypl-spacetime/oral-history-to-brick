@@ -44,8 +44,8 @@ H(stream)
     url: row.url,
     image_urls: [],
     meta: {
-      startMs: row.start,
-      endMs: row.end,
+      startMs: parseInt(row.start),
+      endMs: parseInt(row.end),
       audioUrl: row.audio_url
     },
     collection_id: row.collection
