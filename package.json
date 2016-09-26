@@ -1,0 +1,26 @@
+{
+  "name": "oral-history-to-surveyor",
+  "version": "1.0.0",
+  "description": "Reads data from Oral History CSV dump, outputs Surveyor data, and writes to Surveyor database",
+  "main": "index.js",
+  "dependencies": {
+    "csv-parser": "^1.11.0",
+    "highland": "^2.10.0",
+    "minimist": "^1.2.0",
+    "pg": "^6.1.0",
+    "ramda": "^0.22.1"
+  },
+  "devDependencies": {
+    "standard": "^7.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nypl-spacetime/oral-history-to-surveyor.git"
+  },
+  "scripts": {
+    "test": "standard",
+    "import": "node from-oral-history.js -o data/items.json && node to-surveyor.js"
+  },
+  "author": "Bert Spaan",
+  "license": "MIT"
+}
