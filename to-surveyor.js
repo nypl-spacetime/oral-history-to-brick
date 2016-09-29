@@ -1,51 +1,43 @@
 #!/usr/bin/env node
 
-var argv = require('minimist')(process.argv.slice(2), {
-  alias: {
-    d: 'database'
-  }
-})
-//
-const DATABASE_URL = argv.d || 'postgres://postgres:postgres@localhost:5432/surveyor'
-const db = require('./db')(DATABASE_URL)
 const fs = require('fs')
+const path = require('path')
 const H = require('highland')
 
-const collections = require('./data/collections.json')
+const surveyorDb = require('to-surveyor')
 
-function fillCollections (callback) {
-  db.fillTable('collections', collections, (err) => {
-    if (err) {
-      console.error('Error filling collections table: ', err.message)
-      process.exit(1)
-    }
+const PROVIDER = 'nypl'
+const DATA_DIR = path.join(__dirname, 'data')
 
-    console.log(`Done filling collections table - ${collections.length} collections added!`)
-    callback()
-  })
-}
+const collections = require(path.join(DATA_DIR, 'collections.json'))
+  .map((collection) => Object.assign({
+    provider: PROVIDER,
+    submissions_needed: 1,
+    tasks: [
+      'geotag-text'
+    ]
+  }, collection))
 
-function fillItems () {
-  H(fs.createReadStream('./data/items.ndjson'))
-    .split()
-    .map(JSON.parse)
-    .map((item) => {
-      // pg converts arrays to Postgres array - but we want JSON array!
-      item.image_urls = JSON.stringify(item.image_urls)
-      return item
-    })
-    .toArray((items) => {
-      db.fillTable('items', items, (err) => {
-        if (err) {
-          console.error('Error filling items table: ', err.message)
-          process.exit(1)
-        }
-
-        console.log(`Done filling items table - ${items.length} items added!`)
-      })
-    })
-}
-
-fillCollections(() => {
-  fillItems()
+surveyorDb.addCollections(collections, (err) => {
+  if (err) {
+    console.error(`Error adding collections: ${err.message}`)
+  } else {
+    console.log(`Done adding ${collections.length} collections`)
+      H(fs.createReadStream(path.join(DATA_DIR, 'items.ndjson')))
+        .split()
+        .compact()
+        .map(JSON.parse)
+        .map((item) => Object.assign({
+          provider: PROVIDER
+        }, item))
+        .toArray((items) => {
+          surveyorDb.addItems(items, (err) => {
+            if (err) {
+              console.error(`Error adding items: ${err.message}`)
+            } else {
+              console.log(`Done adding ${items.length} items`)
+            }
+          })
+        })
+  }
 })

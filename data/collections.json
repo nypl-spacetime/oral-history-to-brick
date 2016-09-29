@@ -2,73 +2,61 @@
   {
     "id": "visible-lives",
     "title": "Visible Lives: Oral Histories of the Disability Experience",
-    "provider": "nypl-oral-history",
     "url": "http://oralhistory.nypl.org/neighborhoods/visible-lives"
   },
   {
     "id": "east-bronx",
     "title": "Voices from East of Bronx Park: An Oral History Project of the Allerton, Van Nest, Pelham Parkway and Morris Park Communities",
-    "provider": "nypl-oral-history",
     "url": "http://oralhistory.nypl.org/neighborhoods/east-bronx"
   },
   {
     "id": "washington-heights-inwood",
     "title": "Bridging Our Stories: Washington Heights and Inwood Oral History Project",
-    "provider": "nypl-oral-history",
     "url": "http://oralhistory.nypl.org/neighborhoods/washington-heights-inwood"
   },
   {
     "id": "harlem",
     "title": "A People's History of Harlem: A Harlem Neighborhood Oral History Project",
-    "provider": "nypl-oral-history",
     "url": "http://oralhistory.nypl.org/neighborhoods/harlem"
   },
   {
     "id": "greenwich-village",
     "title": "Your Village, Your Story: Greenwich Village Oral History Project",
-    "provider": "nypl-oral-history",
     "url": "http://oralhistory.nypl.org/neighborhoods/greenwich-village"
   },
   {
     "id": "shakespeare-in-the-park",
     "title": "Stories from the Line: Free Shakespeare in the Park",
-    "provider": "nypl-oral-history",
     "url": "http://oralhistory.nypl.org/neighborhoods/shakespeare-in-the-park"
   },
   {
     "id": "ues",
     "title": "Upper East Side Story: Our Neighborhood Oral History Project",
-    "provider": "nypl-oral-history",
     "url": "http://oralhistory.nypl.org/neighborhoods/ues"
   },
   {
     "id": "soho",
     "title": "SoHo Stories: A Neighborhood Oral History Project",
-    "provider": "nypl-oral-history",
     "url": "http://oralhistory.nypl.org/neighborhoods/soho"
   },
   {
     "id": "stapleton",
     "title": "Stapleton Speaks: Our Neighborhood Oral History Project",
-    "provider": "nypl-oral-history",
     "url": "http://oralhistory.nypl.org/neighborhoods/stapleton"
   },
   {
     "id": "riverdale",
     "title": "Remembering Riverdale: Our Neighborhood Oral History Project",
-    "provider": "nypl-oral-history",
     "url": "http://oralhistory.nypl.org/neighborhoods/riverdale"
   },
   {
     "id": "latino-americans",
     "title": "Latino Americans Memory Circles",
-    "provider": "nypl-oral-history",
     "url": "http://oralhistory.nypl.org/neighborhoods/latino-americans"
   },
   {
     "id": "times-square",
     "title": "Times Square Oral History Project",
-    "provider": "nypl-oral-history",
     "url": "http://oralhistory.nypl.org/neighborhoods/times-square"
   }
 ]

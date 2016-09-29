@@ -19,8 +19,6 @@ const filename = argv._[0]
 var stream = fs.createReadStream(filename, 'utf8')
   .pipe(csv())
 
-const PROVIDER = 'nypl-oral-history'
-
 var collectionsById = {}
 var collectionsByIdNotFound = {}
 const collections = require('./data/collections.json')
@@ -38,17 +36,15 @@ H(stream)
   .filter((row) => row.type === 'annotation')
   .map(dashCollection)
   .map((row) => ({
-    provider: PROVIDER,
+    collection_id: row.collection,
     id: row.id,
-    title: row.text,
-    url: row.url,
-    image_urls: [],
-    meta: {
+    data: {
+      text: row.text,
+      url: row.url,
       startMs: parseInt(row.start),
       endMs: parseInt(row.end),
       audioUrl: row.audio_url
-    },
-    collection_id: row.collection
+    }
   }))
   .map((row) => {
     const collectionId = row.collection_id
